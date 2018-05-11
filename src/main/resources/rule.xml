@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2016-2020 zhongan.com
+    License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher.
+
+-->
+<!DOCTYPE dmds:rule SYSTEM "rule.dtd">
+
+<dmds:rule xmlns:dmds="http://zhongan.com/">
+    <tableRule name="rule_dmds_test_ts_order">
+        <rule>
+            <columns>id</columns>
+            <algorithm>function_dmds_test_ts_order</algorithm>
+        </rule>
+    </tableRule>
+    <function name="function_dmds_test_ts_order"
+              class="com.zhongan.dmds.route.function.PartitionTbByMod">
+        <property name="dbCount">2</property>
+        <property name="tbCount">4</property>
+        <property name="shardColumnType">0</property>
+    </function>
+</dmds:rule>

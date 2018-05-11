@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!--
+
+            Copyright (C) 2016-2020 zhongan.com
+            License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher.
+
+        -->
+  <!ELEMENT dmds:rule (tableRule*,function*)>
+  <!ATTLIST dmds:rule xmlns:dmds CDATA #FIXED "http://zhongan.com/">
+
+  <!ELEMENT tableRule (rule+)>
+  <!ATTLIST tableRule name CDATA #REQUIRED>
+
+  <!ELEMENT rule (columns,algorithm)>
+  <!ELEMENT columns (#PCDATA)>
+  <!ELEMENT algorithm (#PCDATA)>
+
+  <!ELEMENT function (property*)>
+  <!ATTLIST function name CDATA #REQUIRED>
+  <!ATTLIST function class CDATA #REQUIRED>
+
+  <!ELEMENT property (#PCDATA | bean)*>
+  <!ATTLIST property name NMTOKEN #REQUIRED>
+
+  <!ELEMENT bean (property*)>
+  <!ATTLIST bean name NMTOKEN #IMPLIED>
+  <!ATTLIST bean class NMTOKEN #IMPLIED>

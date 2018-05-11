@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright (C) 2016-2020 zhongan.com
+    License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher.
+
+-->
+<configuration>
+
+    <property name="log.dir" value="${DMDS_HOME}"/>
+
+    <!-- console -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder charset="UTF-8">
+            <!-- <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} [%c-%L] - %msg%n  </pattern> -->
+            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %c[%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="infoAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.dir}/logs/dmds.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/logs/dmds-%d{yyyy-MM-dd}.log.gz
+            </fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <!-- <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern> -->
+            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %c[%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="errorAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.dir}/logs/dmds-error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/logs/dmds-error-%d{yyyy-MM-dd}.log.gz
+            </fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <!--<pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern> -->
+            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %c[%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- log level -->
+    <root>
+        <level value="info"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="infoAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </root>
+</configuration>

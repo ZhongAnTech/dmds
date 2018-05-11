@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2016-2020 zhongan.com
+    License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher.
+
+-->
+<!DOCTYPE dmds:server SYSTEM "server.dtd">
+<dmds:server xmlns:dmds="http://zhongan.com/">
+    <system>
+        <property name="serverPort">8048</property>
+        <property name="managerPort">9048</property>
+    </system>
+    <user name="dmds_test">
+        <property name="password">4fe313bd</property>
+        <property name="schemas">dmds_test</property>
+    </user>
+
+</dmds:server>
