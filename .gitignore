@@ -1,0 +1,9 @@
+**/.settings/**
+**/.factory*
+**/.class*
+**/target/**
+**/.idea/**
+**/.settings/**
+*.project
+*.iml
+*.log

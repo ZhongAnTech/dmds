@@ -1,0 +1,65 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>${timestamp}</id>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <!-- jar包目录 -->
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>true</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <useProjectAttachments>true</useProjectAttachments>
+        </dependencySet>
+    </dependencySets>
+    <fileSets>
+        <!-- 脚本目录 -->
+        <fileSet>
+            <directory>bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>startup.sh</include>
+                <include>stop.sh</include>
+                <!-- <include>startup.bat</include> -->
+            </includes>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+        <!-- 配置文件目录 -->
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>*</include>
+            </includes>
+            <excludes>
+                <exclude>META-INF</exclude>
+            </excludes>
+            <outputDirectory>conf</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>conf</directory>
+            <includes>
+                <include>*</include>
+            </includes>
+            <outputDirectory>conf</outputDirectory>
+        </fileSet>
+        <!-- 日志目录 -->
+        <fileSet>
+            <directory>../</directory>
+            <excludes>
+                <exclude>*/**</exclude>
+            </excludes>
+            <outputDirectory>logs</outputDirectory>
+        </fileSet>
+        <!-- license -->
+        <fileSet>
+            <directory>.</directory>
+            <includes>
+                <include>LICENSE</include>
+            </includes>
+            <outputDirectory>conf</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

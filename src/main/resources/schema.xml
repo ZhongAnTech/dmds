@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2016-2020 zhongan.com
+    License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher.
+
+-->
+<!DOCTYPE dmds:schema SYSTEM "schema.dtd">
+
+<dmds:schema xmlns:dmds="http://zhongan.com/">
+    <schema name="dmds_test" checkSQLschema="true" sqlMaxLimit="5000" dataNode="dn_dmds_test_00">
+        <table name="ts_order" primaryKey="id" dataNode="dn_dmds_test_00, dn_dmds_test_01"
+               rule="rule_dmds_test_ts_order"/>
+    </schema>
+    <dataNode name="dn_dmds_test_00" dataHost="dh_dmds_test_00" database="dmds_test_00"/>
+    <dataNode name="dn_dmds_test_01" dataHost="dh_dmds_test_00" database="dmds_test_01"/>
+    <dataHost name="dh_dmds_test_00" maxCon="100" minCon="1" balance="0" writeType="0" dbType="mysql"
+              dbDriver="native" switchType="1" slaveThreshold="100">
+        <heartbeat>select 1</heartbeat>
+        <writeHost host="M-dh_dmds_test_00" url="localhost:3306" user="dmds_test_user" password="pwd135"/>
+    </dataHost>
+
+</dmds:schema>
